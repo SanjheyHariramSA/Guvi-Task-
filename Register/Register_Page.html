@@ -65,7 +65,7 @@
           <input id='submitButton' type="submit" value="submit" onclick="submit()" >
         </div>
         <div class="Sign_in">
-          Already Have an Account <a href="GuviTask/Login/Login_page.html">Signin now</a>
+          Already Have an Account <a href="http://localhost/Guvi-Task-/Login/Login_Page.html">Signin now</a>
         </div>
       </form>
     </div>
@@ -113,7 +113,7 @@
                  success : function(response){
                   if(response==1){
                     alert("Regitered Succssfully Kindly Click Ok for redirect to Login page");
-                    window.location.assign("GuviTask/Login/Login_page.html");
+                    window.location.href('http://localhost/Guvi-Task-/Login/Login_Page.html');
                   }
                   else{
                     alert("Mail id Already Registerd");
