@@ -1,0 +1,13 @@
+Kindly Follow Belowe Steps to Create DataBase.
+
+CREATE SCHEMA guvi AUTHORIZATION STUDENT;
+
+
+CREATE TABLE `register` (
+  `fullname` varchar(25) CHARACTER SET latin1 DEFAULT NULL,
+  `username` varchar(25) CHARACTER SET latin1 DEFAULT NULL,
+  `email` varchar(25) CHARACTER SET latin1 NOT NULL,
+  `phone_number` bigint(10) NOT NULL,
+  `password` varchar(25) CHARACTER SET latin1 DEFAULT NULL,
+  `gender` varchar(15) CHARACTER SET latin1 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
