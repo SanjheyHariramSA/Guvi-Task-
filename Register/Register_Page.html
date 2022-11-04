@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset=”utf-8″/>
+  <link rel="stylesheet" href="Register_Page.css">
+  <title>Register Page</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+      <form id='formName' onsubmit="return insert()" method="post">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <input type="text" placeholder="Enter your name" name="fullname" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" placeholder="Enter your username" name="username" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" placeholder="Enter your email" name="email" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="text" placeholder="Enter your number" name="phone_number" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" placeholder="Enter your password" name="password" id="pswd" required>
+            <span id="message1" style="color:red"> </span>
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="password" placeholder="Confirm your password" name="confirm_password" id="cpswd"
+               required>
+            <span id="message2" style="color:red"> </span>
+          </div>
+        </div>
+        <div class="gender-details">
+          <input type="radio" name="gender" id="dot-1" value="Male">
+          <input type="radio" name="gender" id="dot-2" value="Female">
+          <input type="radio" name="gender" id="dot-3" value="Others">
+          <span class="gender-title">Gender</span>
+          <div class="category">
+            <label for="dot-1">
+              <span class="dot one"></span>
+              <span class="gender">Male</span>
+            </label>
+            <label for="dot-2">
+              <span class="dot two"></span>
+              <span class="gender">Female</span>
+            </label>
+            <label for="dot-3">
+              <span class="dot three"></span>
+              <span class="gender">Others</span>
+            </label>
+          </div>
+        </div>
+        <div class="button">
+          <input id='submitButton' type="submit" value="submit" onclick="submit()" >
+        </div>
+        <div class="Sign_in">
+          Already Have an Account <a href="GuviTask/Login/Login_page.html">Signin now</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script type="text/javascript">
+    //$(document).ready(function() {
+    function insert() {
+      var flag = false;
+      var pw = document.getElementById("pswd").value;
+      var cpw = document.getElementById("cpswd").value;
+      if (pw.length < 8) {
+        document.getElementById("message1").innerHTML = "**Password length must be atleast 8 characters";
+        alert();
+        return false;
+      }
+      if (pw.length > 15) {
+        document.getElementById("message1").innerHTML = "**Password length must not exceed 15 characters";
+        return false;
+      }
+      if (pw != cpw) {
+        document.getElementById("message2").innerHTML = "**Passwords are not same";
+        return false;
+      } else {
+        flag = true;
+      }
+      if (flag === true) {
+        var action;
+      $(document).ready(function () {
+        alert("Click OK to Login");
+            $.ajax({
+                  type: 'POST', //Method type
+                  url: 'register.php', //Your form processing file URL
+                  data: {
+                    // Get value
+                    fullname: $("input[name=fullname]").val(),
+                    username: $("input[name=username]").val(),
+                    email: $("input[name=email]").val(),
+                    phone_number: $("input[name=phone_number]").val(),
+                    gender: $("input[name=gender]:checked").val(),
+                    password: $("input[name=password]").val(),
+                    confirm_password: $("input[name=confirm_password]").val(),
+                    action : "submit", 
+                  },
+                 success : function(response){
+                  if(response==1){
+                    alert("Regitered Succssfully Kindly Click Ok for redirect to Login page");
+                    window.location.assign("GuviTask/Login/Login_page.html");
+                  }
+                  else{
+                    alert("Mail id Already Registerd");
+                  }
+                 }
+                });
+      });
+    }
+  };
+  </script>
+</body>
+
+</html>
